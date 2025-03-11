@@ -14,12 +14,23 @@
 </template>
 
 <script setup lang="ts">
+import type { Label } from '@/interfaces/account';
+
+interface Props {
+  labels: Label[];
+  type: 'local' | 'ldap';
+  login: string;
+  password: string;
+}
+
+const { labels, login, password, type } = defineProps<Props>()
+
 const form = ref(null);
 const formData = ref({
-  labels: "",
-  type: "local",
-  login: "",
-  password: "",
+  labels: labels || [],
+  type: login || "local",
+  login: password || "",
+  password: type || "",
 });
 
 async function validate() {
