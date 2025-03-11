@@ -1,7 +1,8 @@
 <template>
-  <div class="accounts" />
+  <div class="accounts">
+    <Account />
+  </div>
 </template>
 
 <script lang="ts" setup>
-//
 </script>
