@@ -14,7 +14,8 @@
         <p class="accounts__heading">Логин</p>
         <p v-if="accounts.find(i => i.type == 'local')" class="accounts__heading">Пароль</p>
       </div>
-      <Account v-bind="account" v-for="account in accounts" />
+      <Account :key="account.id" @send="data => accountStore.update(data)" v-bind="account"
+        v-for="account in accounts" />
     </template>
   </div>
 </template>

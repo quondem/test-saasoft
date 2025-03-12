@@ -8,10 +8,15 @@ export const useAccountStore = defineStore('account', {
   }),
   actions: {
     addOne() {
-      this.accounts.push({ labels: [{ text: '123' }, { text: 'fds' }], type: 'local', login: '', password: '', id: this.accounts[this.accounts.length - 1]?.id || 1 })
+      this.accounts.unshift({ labels: [], type: 'local', login: '', password: '', id: this.accounts[0]?.id + 1 || 1 })
     },
     delete(id: number) {
       this.accounts.splice(this.accounts.findIndex(i => id == i.id), 1)
+    },
+    update(account: Account) {
+      const index = this.accounts?.findIndex(i => account.id == i.id)
+      this.accounts[index] = account
     }
-  }
+  },
+  persist: true,
 })
