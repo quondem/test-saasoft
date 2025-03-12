@@ -12,11 +12,10 @@
         <p class="accounts__heading">Метки</p>
         <p class="accounts__heading">Тип поля</p>
         <p class="accounts__heading">Логин</p>
-        <p class="accounts__heading">Пароль</p>
+        <p v-if="accounts.find(i => i.type == 'local')" class="accounts__heading">Пароль</p>
       </div>
       <Account v-bind="account" v-for="account in accounts" />
     </template>
-
   </div>
 </template>
 
